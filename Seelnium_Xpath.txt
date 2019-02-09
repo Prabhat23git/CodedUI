@@ -1,0 +1,87 @@
+Xpath - Syntax
+
+driver.findElement(By.partialLinkText("Create")).click();
+
+
+//tagName[@attribute = value]
+(XPATH AXES)
+
+Example:
+//input[@name='log']
+//input[@id ='user_login']
+//a[@title='powered by wordpress']
+
+******************************************************Multiple Attribute
+
+//input[@class='ínput'][@name='log']
+//input[@calss ='input' or @name ='log'] ------------> can use either of one attribute
+//input[@calss ='input' and @name ='log']------------> should match both attribute
+
+//a[text()='ádmin'] -------------------------------> text (use "," insted of  "=" if using text with conatins else "=" only)
+
+//a[conatins(@href,'edit.php')][text()='posts']
+
+//a[conatins(text(),'Dismiss this message')]
+
+//img[contains(@src,'admin' )]
+
+//div[conatins(@id,'')]
+
+//tagname[starts-with(@id,'user')]
+
+******************************************************Following the next element from identified one
+e.g. Locate next element from the text "Discussion"
+
+//*[text()='Discussion']//following::a[conatins(@href,'édit.php')][text()='posts']
+
+e.g if many matching item available with attribute use index:
+
+//*[@id='content-label']//following::textarea[1] -> Display the first textarea after content-label
+
+//*[@id='content-label']//following::a[1]
+
+//*[@id='content-label']//following::textarea[@id = 'user-name']
+
+
+******************************************************preceding the next element from identified one
+e.g. Locate before element from the text "Discussion"
+
+//*[text()='Discussion']//preceding::a[conatins(@href,'édit.php')][text()='posts']
+
+e.g if many matching item available with attribute use index:
+
+//*[@id='content-label']//preceding::textarea[1] -> Display the first textarea after content-label
+
+//*[@id='content-label']//preceding::a[1]
+
+//*[@id='content-label']//preceding::textarea[@id = 'user-name']
+
+**********************************************************************************************************************ansestor
+//input[@id ='user_login']//ancestor::div[1]  -> it will take to the first ancestor to the user login having tag div
+//input[@id ='user_login']//ancestor::a[1]  -> it will take to the first ancestor to the user login having tag div
+
+
+**********************************************************************************************************************************************
+Absolute vs Relative XPATH.. (Use of Absolute and relative together)
+
+('/' single slash indicate the relative Xpath, eg find the element with id 'menu-dashboard'then deep into the hierarchy using relative path)
+
+
+//*[@id='menu-dashboard']/div[2]/p/a[1]
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+Chrome Browser:
+
+Right Click->Inspect Element-> Ctr+F (will give option to search by xpath also)
+
+************************************************************************Navigate back to parent and then to siblings
+Preceding-sibling:: -> Before Sibling
+Forward-sibling::----> Next Sibling   
+
+e.g- > Select a checkbox whise textbox conatins Test2:
+find the text test2, go to parent item whose predding sibling input is that checkbox
+
+//a[text()='test2']//parent::td[@class='detail']//preceding-sibling::td[@class='data']//input[@name='abc']
+
