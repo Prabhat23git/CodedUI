@@ -1,0 +1,82 @@
+public void EntityPageAction(string tabname,string Fieldname, string valuetoset)
+        {
+            try
+            {
+                Browserfactory.driver.SwitchTo().DefaultContent();
+                Browserfactory.driver.SwitchTo().Frame("contentIFrame1");
+                
+                 //Browserfactory.driver.FindElement(By.XPath("//*[@id='SUMMARY_TAB_header_h2']")).Click();
+           
+            string xpath = "//div[contains(@id,'" + tabname + "')]//div[contains(@aria-label,'" + Fieldname + "')]";
+                // Browserfactory.driver.FindElement(By.XPath("//*[@id='SUMMARY_TAB_header_h2']")).Click();
+                //div[contains(@id,'SUMMARY')]//div[contains(@aria-label,'Account Name Required')]
+                //string xpath1 = "//input[@id='name_i']";
+                //IWebElement AccountNAme = Browserfactory.driver.FindElement(By.XPath("//*[contains(@aria-label,'Account Name Type')]"));
+
+                //IWebElement ActName = Browserfactory.driver.FindElement(By.XPath("//td[@id='name_c']"));
+                //ActName.Click();
+                Actions action = new Actions(Browserfactory.driver);
+                //IWebElement ActText = Browserfactory.driver.FindElement(By.XPath("//div[@id='name']"));
+                IWebElement ActText = Browserfactory.driver.FindElement(By.XPath(xpath));
+                ActText.Click();
+                action.SendKeys(ActText, valuetoset).Build().Perform();
+
+             //AccountNAmeText.EnterText(valuetoset);
+                Browserfactory.driver.SwitchTo().DefaultContent();
+                SaveButton.Click();
+            }
+            catch (Exception e)
+            { }
+        }
+
+
+-------------------------
+//div[@class='ms-crm-InlineTabContainer-Read']/div[@name='Pricing']
+
+//div[@class='ms-crm-InlineTabContainer-Read']/div[@name='DETAILS_TAB']
+
+//div[@class='ms-crm-InlineTabContainer-Read']/div[@name='FieldService']
+
+//div[@class='ms-crm-InlineTabContainer-Read']/div[@name='urstab']
+
+
+//input[@class='ms-crm-InlineInput']
+
+
+//div[contains(@id,'SUMMARY')]//div[contains(text(),'Account Name Re')]
+
+
+testhandson@cddtst4.onmicrosoft.com
+Mirosoft@12
+
+//div[contains(@id,'DETAILS_TAB')]//div[contains(text(),'SIC')]
+
+//div[contains(@id,'DETAILS_TAB')]//div[contains(text(),'SIC')]]
+
+###################################################################################
+//div[contains(@id,'SUMMARY')]//div[contains(@aria-label,'Account Name Required')]
+//div[contains(@id,'SUMMARY')]//div[contains(text(),'Account Name Required')]
+
+//div[contains(@id,'SUMMARY')]//div[contains(text(),'Account Name Required')]
+
+//div[contains(@id,'SUMMARY')]//div[contains(text(),'Phone')]
+
+
+//div[contains(@id,'DETAILS')]//div[contains(text(),'Industry')]
+//div[contains(@id,'DETAILS')]//div[contains(text(),'SIC Code')]
+
+
+//div[contains(@id,'FieldService')]//div[contains(text(),'Billing Account')]
+//div[contains(@id,'FieldService')]//div[contains(text(),'Sales Tax Code')]
+
+
+//div[contains(@id,'urstab')]//div[contains(text(),'Latitude')]
+//div[contains(@id,'urstab')]//div[contains(text(),'Longitude')]
+
+
+
+
+
+
+
+
